@@ -8,4 +8,6 @@ import org.springframework.stereotype.Service;
 public interface UserAccountService {
     UserAccount save(UserAccount userAccount);
 
+    UserAccount login(String username, String password);
+
 }

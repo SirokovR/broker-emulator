@@ -18,14 +18,30 @@ public class UserAccountServiceImpl implements UserAccountService {
         checkUsername(userAccount.getUsername());
         checkEmail(userAccount.getEmail());
         checkPhone(userAccount.getPhone());
-
-
         return repository.save(userAccount);
 
     }
 
+
+
+    @Override
+    public UserAccount login(String username, String password) {
+        final UserAccount userAccountFromDb  = repository.findByUsername(username);
+        if(userAccountFromDb != null){
+            if(userAccountFromDb.getPassword().equals(password))return userAccountFromDb;
+
+
+        }
+        throw  new  RuntimeException();
+
+    }
+
+
+
+
+
     private void checkEmail(String email) {
-        final UserAccount userAccountFromDb  = repository.findByUsername(email);
+        final UserAccount userAccountFromDb  = repository.findByEmail(email);
         if(userAccountFromDb != null){
             throw  new RuntimeException("User with email: " + email + "already exists");
         }

@@ -6,11 +6,8 @@ import com.bta.brokeremulator.service.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserAccountController {
@@ -32,6 +29,15 @@ public class UserAccountController {
     }
 
 
+    @PostMapping("/login")
+    public ResponseEntity<UserAccount> loginUser(@RequestParam(name="username") String login,
+                                                 @RequestParam String password){
+        UserAccount registratedUserAccount =userAccountService.login(login,password);
 
+        if (registratedUserAccount == null) {
+            return  new ResponseEntity<>(registratedUserAccount, HttpStatus.FORBIDDEN);
+        }
+        return new ResponseEntity<>(registratedUserAccount, HttpStatus.OK);
+    }
 
 }
