@@ -14,6 +14,8 @@ import com.bta.brokeremulator.dto.AlphaRequestDto;
 import com.bta.brokeremulator.dto.AlphaResponseDto;
 import com.bta.brokeremulator.service.AlphaService;
 
+import java.net.URISyntaxException;
+
 @Controller
 @RequestMapping("alpha")
 public class AlphaController {
@@ -26,9 +28,9 @@ public class AlphaController {
         return "alpha/alpha-request";
     }
 
-    @PostMapping("statistics")
+    @PostMapping("statistics")                                 ///добавление URISyntaxException
     public ResponseEntity<AlphaResponseDto> getStatistics(
-            @ModelAttribute AlphaRequestDto request) {
+            @ModelAttribute AlphaRequestDto request) throws URISyntaxException {
 
         final AlphaResponseDto response = alphaService.getStatistics(request);
 
