@@ -47,5 +47,7 @@ public class UserAccount implements Serializable {
     private  String lastName;
 
 
+    @Column(name="active",nullable = false)
+    private Boolean active;  //делаем Большие типы что бы избежать сайд еффекта.  потому что большой Буулеан может быть Нулл
 
 }
