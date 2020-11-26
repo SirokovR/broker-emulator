@@ -6,12 +6,12 @@
 
     <div>
         <label for="username">Username:</label><br>
-        <input type="text" name="username"><br><br>
+        <input type="text"  name="username"><br><br>
 
         <label for="password">Password</label><br>
-        <input type="password" name="password"><br><br>
+        <input type="password"  name="password"><br><br>
         <div>
-            <input type="submit" value="login">
+            <input type="submit"  value="login">
         </div>
 
     </div>

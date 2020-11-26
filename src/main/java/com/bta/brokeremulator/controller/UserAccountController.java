@@ -14,6 +14,11 @@ public class UserAccountController {
     @Autowired
     private UserAccountService userAccountService;
 
+    @GetMapping("/")
+    public String getIndexView(){
+        return "home";
+    }
+
     @GetMapping("registration")
     public  String getRegistrationView(){
         //return "templates/registration.ftl";

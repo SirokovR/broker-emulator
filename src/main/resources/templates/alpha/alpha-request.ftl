@@ -11,13 +11,20 @@
             <small id="stickerHelp" class="form-text text-muted">Please enter Sticker</small>
         </div>
 
+
+        <div class="form-group">
+            <label for="endDate">End date</label>
+            <input type="date" class="form-control" aria-describedby="endDateHelp" name="endDate">
+            <small id="endDateHelp" class="form-text text-muted">Please enter date of statistics </small>
+        </div>
+
         <div class="form-group">
             <label for="time-period">Time Period</label>
             <select id="time-period" name="timePeriod" class="form-control">  <#--name нужен что бы Спринг добавил его в класс потом-->
-                <option selected>Day</option>
-                <option>Week</option>
-                <option>Month</option>
-                <option>Year</option>
+                <option value="TIME_SERIES_DAYLY" selected>Day</option>
+                <option value="TIME_SERIES_WEEKLY">Week</option>
+                <option value="TIME_SERIES_MONTHLY">Month</option>
+                <option value="TIME_SERIES_YEARLY">Year</option>
             </select>
         </div>
 

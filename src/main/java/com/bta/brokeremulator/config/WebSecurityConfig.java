@@ -31,7 +31,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/user/registration","/alpha/**").permitAll()
+                .antMatchers("/", "/user/registration","/alpha/**", "/transaction/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/user/login").permitAll()
@@ -68,6 +68,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .passwordEncoder(passwordEncoder)
-                .usersByUsernameQuery("SELECT username, password, active FROM user_account where username=?");
+                .usersByUsernameQuery("SELECT username, password, active FROM user_account where username=?")
+                .authoritiesByUsernameQuery("SELECT username, role FROM user_account where username=?");
     }
 }
